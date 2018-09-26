@@ -11781,7 +11781,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -11860,6 +11860,8 @@ div#notebook {
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total number of databases:&quot;</span><span class="p">,</span> <span class="n">cursor</span><span class="o">.</span><span class="n">rowcount</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+    
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;USE TaxiTest&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12011,7 +12013,7 @@ query = &#34;INSERT INTO TaxiTest.insurancecompany (idInsuranceCompany, Address,
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">count_rows</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
@@ -12038,7 +12040,7 @@ query = &#34;INSERT INTO TaxiTest.insurancecompany (idInsuranceCompany, Address,
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[4]:</div>
+<div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -12055,32 +12057,19 @@ query = &#34;INSERT INTO TaxiTest.insurancecompany (idInsuranceCompany, Address,
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">delete_all_rows</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Data generation</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;InsuranceCompanies/Companies.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;InsuranceCompany/Company.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">names</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 
 <span class="n">total_number</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;len(names): &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">))</span>
 <span class="n">idInsuranceCompany</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">total_number</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;Streets.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;Street\Street.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">streets</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
     <span class="n">streets</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">streets</span><span class="p">,</span> <span class="n">total_number</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
@@ -12098,10 +12087,30 @@ query = &#34;INSERT INTO TaxiTest.insurancecompany (idInsuranceCompany, Address,
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Q: &quot;</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;D: &quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="n">insert_many_rows</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="c1"># insert_many_rows(query, data)</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>len(names):  49
+Q:  INSERT INTO insurancecompany (idInsuranceCompany, Address, Phone, Mail, Name) VALUES (%s, %s, %s, %s, %s)
+D:  (1, &#39;Kazan, Batyrlyk, 98&#39;, &#39;+7(843)6297134&#39;, &#39;asko@gmail.com&#39;, &#39;ASKO&#39;)
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -12132,29 +12141,7 @@ query = &#34;INSERT INTO TaxiTest.insurancecompany (idInsuranceCompany, Address,
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Getting InsuranceCompanies list and saving in json </span>
-<span class="n">file</span> <span class="o">=</span> <span class="s2">&quot;InsuranceCompanies\Companies.txt&quot;</span>
-
-<span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">with</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
-        
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;InsuranceCompanies\Companies.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
-    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">outfile</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">DB_NAME</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="s2">&quot;insurance&quot;</span>
@@ -12191,7 +12178,7 @@ query = &#34;INSERT INTO TaxiTest.insurance (idInsurance, InsCompany_idInsCompan
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">count_rows</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
@@ -12218,7 +12205,7 @@ query = &#34;INSERT INTO TaxiTest.insurance (idInsurance, InsCompany_idInsCompan
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[7]:</div>
+<div class="prompt output_prompt">Out[17]:</div>
 
 
 
@@ -12235,23 +12222,12 @@ query = &#34;INSERT INTO TaxiTest.insurance (idInsurance, InsCompany_idInsCompan
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">delete_all_rows</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Data generation</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;InsuranceCompany\Company.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">outfile</span><span class="p">)</span>
 
 <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO TaxiTest.insurance (idInsurance, InsCompany_idInsCompany, InsuranceEndDate, InsuranceStartDate) VALUES (</span><span class="si">%s</span><span class="s2"> , </span><span class="si">%s</span><span class="s2"> , </span><span class="si">%s</span><span class="s2"> , </span><span class="si">%s</span><span class="s2"> )&quot;</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
@@ -12269,10 +12245,29 @@ query = &#34;INSERT INTO TaxiTest.insurance (idInsurance, InsCompany_idInsCompan
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Q: &quot;</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;D: &quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="n">insert_many_rows</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="c1"># insert_many_rows(query, data)</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Q:  INSERT INTO TaxiTest.insurance (idInsurance, InsCompany_idInsCompany, InsuranceEndDate, InsuranceStartDate) VALUES (%s , %s , %s , %s )
+D:  (1, 29, datetime.date(2016, 6, 19), datetime.date(2017, 1, 5))
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -12299,31 +12294,7 @@ query = &#34;INSERT INTO TaxiTest.insurance (idInsurance, InsCompany_idInsCompan
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load the data from stored text file</span>
-<span class="c1"># 1. Make json file</span>
-<span class="n">file</span> <span class="o">=</span> <span class="s2">&quot;Car/MarkModel.txt&quot;</span>
-<span class="n">cars</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-<span class="k">with</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">cars</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">line</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
-
-<span class="c1"># Choose unique</span>
-<span class="n">cars</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">cars</span><span class="p">))</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;Car/Cars.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
-    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">cars</span><span class="p">,</span> <span class="n">outfile</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">DB_NAME</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="s2">&quot;car&quot;</span>
@@ -12360,7 +12331,7 @@ Total number of rows TaxiTest.car: [(100,)].
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[9]:</div>
+<div class="prompt output_prompt">Out[19]:</div>
 
 
 
@@ -12377,7 +12348,7 @@ Total number of rows TaxiTest.car: [(100,)].
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Data generation</span>
@@ -12392,7 +12363,7 @@ Total number of rows TaxiTest.car: [(100,)].
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">insurances</span><span class="p">)</span>
 
 <span class="c1"># Load cars</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;Car/Cars.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;Car/Car.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">cars</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 
 <span class="c1"># Generate UNIQUE car licenses</span>
@@ -12415,10 +12386,29 @@ Total number of rows TaxiTest.car: [(100,)].
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Q: &quot;</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;D: &quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="c1">#insert_many_rows(table, query, data)</span>
+<span class="c1"># insert_many_rows(query, data)</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Q:  INSERT INTO TaxiTest.car (idCar, Lisense, Mark, Model, Insurance_idInsurance, ChildSeat) VALUES (%s, %s, %s, %s, %s, %s)
+D:  (1, &#39;5FLUNKP&#39;, &#39;Jeep&#39;, &#39;Renegade&#39;, 13, 1)
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -12446,7 +12436,7 @@ Total number of rows TaxiTest.car: [(100,)].
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">DB_NAME</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="s1">&#39;driver&#39;</span> 
@@ -12482,7 +12472,7 @@ Total number of rows TaxiTest.driver: [(75,)].
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[10]:</div>
+<div class="prompt output_prompt">Out[21]:</div>
 
 
 
@@ -12499,18 +12489,18 @@ Total number of rows TaxiTest.driver: [(75,)].
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[95]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">total_number</span> <span class="o">=</span> <span class="mi">75</span>
 <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO TaxiTest.driver (idDriver, Name, DriverLisence, Phone, isWorking) VALUES (</span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">)&quot;</span>
 
 <span class="c1"># Get all possible names_surnames combinations</span>
-<span class="n">all_names_surnames</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">with</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;AllCombinations.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">all_names_surnames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
-
+<span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;Names/Names.json&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">total_number</span><span class="p">))</span>
+    
 <span class="c1"># Generate UNIQUE driver licenses</span>
 <span class="n">licenses</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">licenses</span><span class="p">)</span> <span class="o">!=</span> <span class="n">total_number</span><span class="p">:</span>
@@ -12519,10 +12509,7 @@ Total number of rows TaxiTest.driver: [(75,)].
     <span class="n">licenses</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">part1</span> <span class="o">+</span> <span class="n">part2</span><span class="p">)</span>
 <span class="n">licenses</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">licenses</span><span class="p">)</span>
 
-
-<span class="c1"># Get names</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">all_names_surnames</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">total_number</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_number</span><span class="p">):</span>
     <span class="n">idDriver</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="c1"># Failed processing format-parameters; Python &#39;str_&#39; cannot be converted to a MySQL type</span>
@@ -12535,7 +12522,7 @@ Total number of rows TaxiTest.driver: [(75,)].
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Q: &quot;</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;D: &quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="n">insert_many_rows</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="c1"># insert_many_rows(query, data)</span>
 </pre></div>
 
 </div>
@@ -12553,8 +12540,7 @@ Total number of rows TaxiTest.driver: [(75,)].
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Q:  INSERT INTO TaxiTest.driver (idDriver, Name, DriverLisence, Phone, isWorking) VALUES (%s, %s, %s, %s, %s)
-D:  (1, &#39;Роберт Моисеев&#39;, &#39;GJUQZRR1063&#39;, &#39;+7(296)5290592&#39;, 1)
-No result set to fetch from.
+D:  (1, &#39;Осипов Альберт&#39;, &#39;XHWIWQG7816&#39;, &#39;+7(820)5254510&#39;, 1)
 </pre>
 </div>
 </div>
@@ -12587,7 +12573,7 @@ No result set to fetch from.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">DB_NAME</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="s1">&#39;address&#39;</span> 
@@ -12622,7 +12608,7 @@ Total number of rows TaxiTest.address: [(1000,)].
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[11]:</div>
+<div class="prompt output_prompt">Out[25]:</div>
 
 
 
@@ -12662,7 +12648,7 @@ Total number of rows TaxiTest.address: [(1000,)].
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Q: &quot;</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;D: &quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="n">insert_many_rows</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="c1"># insert_many_rows(query, data)</span>
 </pre></div>
 
 </div>
@@ -12698,7 +12684,7 @@ Total number of rows TaxiTest.address: [(1000,)].
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">DB_NAME</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="s1">&#39;Driver&#39;</span>
@@ -12763,10 +12749,10 @@ Total number of rows TaxiTest.Taxi: [(500,)].
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[143]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="s2">&quot;Taxi&quot;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="s2">&quot;TaxiTest.Taxi&quot;</span>
 
 <span class="c1"># Using Taxi table attributes order to create query.</span>
 <span class="c1"># INSERT INTO Taxi (idTaxi, Driver_idDriver, Car_idCar, Current_idAddress, Available, LatUpdate)</span>
@@ -12774,7 +12760,7 @@ Total number of rows TaxiTest.Taxi: [(500,)].
 <span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;SELECT idDriver, isWorking, idCar, ROUND(1 + RAND() * </span><span class="si">%s</span><span class="s2">) as Current_idAddress FROM Driver JOIN Car &quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">address_rows_amount</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="n">total_amount</span> <span class="o">=</span> <span class="mi">500</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">select_rows</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">select_rows</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 
 <span class="n">taxi_combinations_set</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">taxi_combinations_set</span><span class="p">)</span>                                  
@@ -12793,7 +12779,7 @@ Total number of rows TaxiTest.Taxi: [(500,)].
     <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span> <span class="n">available</span><span class="p">,</span> <span class="n">LastUpdate</span><span class="p">))</span>
     <span class="c1">#print(data[i])</span>
     
-<span class="n">insert_many_rows</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="c1"># insert_many_rows(q, data)</span>
 </pre></div>
 
 </div>
@@ -12811,7 +12797,6 @@ Total number of rows TaxiTest.Taxi: [(500,)].
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Total number of rows Address: [(1000,)].
-No result set to fetch from.
 </pre>
 </div>
 </div>
@@ -12830,7 +12815,7 @@ No result set to fetch from.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">DB_NAME</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="s1">&#39;operator&#39;</span> 
@@ -12865,7 +12850,7 @@ Total number of rows TaxiTest.operator: [(50,)].
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[13]:</div>
+<div class="prompt output_prompt">Out[42]:</div>
 
 
 
@@ -12882,7 +12867,7 @@ Total number of rows TaxiTest.operator: [(50,)].
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[156]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">total_number</span> <span class="o">=</span> <span class="mi">50</span>
@@ -12890,11 +12875,9 @@ Total number of rows TaxiTest.operator: [(50,)].
 
 <span class="c1"># Get all possible names_surnames combinations</span>
 <span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">with</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;AllCombinations.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
-
-<span class="n">names</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">total_number</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;Names/Names.json&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">total_number</span><span class="p">))</span>
 
 <span class="c1"># Generate UNIQUE phones</span>
 <span class="n">phones</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
@@ -12917,7 +12900,7 @@ Total number of rows TaxiTest.operator: [(50,)].
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Q: &quot;</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;D: &quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="c1"># insert_many_rows(table, query, data)</span>
+<span class="c1"># insert_many_rows(query, data)</span>
 </pre></div>
 
 </div>
@@ -12935,7 +12918,7 @@ Total number of rows TaxiTest.operator: [(50,)].
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Q:  INSERT INTO TaxiTest.operator (idOperator, Name, Phone, Mail) VALUES (%s, %s, %s, %s)
-D:  (1, &#39;Геннадий Игнатов&#39;, &#39;+7(843)3240492&#39;, &#39;gennadij.ignatov@gmail.com&#39;)
+D:  (1, &#39;Федоров Вадим&#39;, &#39;+7(843)2283950&#39;, &#39;fedorov.vadim@gmail.com&#39;)
 </pre>
 </div>
 </div>
@@ -12965,7 +12948,7 @@ D:  (1, &#39;Геннадий Игнатов&#39;, &#39;+7(843)3240492&#39;, &#3
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">DB_NAME</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="s1">&#39;client&#39;</span> 
@@ -13000,7 +12983,7 @@ Total number of rows TaxiTest.client: [(5000,)].
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[14]:</div>
+<div class="prompt output_prompt">Out[44]:</div>
 
 
 
@@ -13017,7 +13000,7 @@ Total number of rows TaxiTest.client: [(5000,)].
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[191]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">total_number</span> <span class="o">=</span> <span class="mi">5000</span>
@@ -13025,9 +13008,9 @@ Total number of rows TaxiTest.client: [(5000,)].
 
 <span class="c1"># Get all possible names_surnames combinations</span>
 <span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">with</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;AllCombinations.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;Names/Names.json&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">total_number</span><span class="p">))</span>
 
 <span class="n">names</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">total_number</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
@@ -13049,7 +13032,7 @@ Total number of rows TaxiTest.client: [(5000,)].
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Q: &quot;</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;D: &quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="c1"># insert_many_rows(table, query, data)</span>
+<span class="c1"># insert_many_rows(query, data)</span>
 </pre></div>
 
 </div>
@@ -13067,8 +13050,7 @@ Total number of rows TaxiTest.client: [(5000,)].
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Q:  INSERT INTO TaxiTest.client (idClient, Name, Phone, Password) VALUES (%s, %s, %s, %s)
-D:  (1, &#39;Геннадий Устинов&#39;, &#39;+7(258)5810388&#39;, &#39;3J49E1e&#39;)
-No result set to fetch from.
+D:  (1, &#39;Лебедев Виктор&#39;, &#39;+7(950)6118323&#39;, &#39;WkUQVNw&#39;)
 </pre>
 </div>
 </div>
@@ -13179,7 +13161,7 @@ Total number of rows TaxiTest.PhoneCall: [(1500,)].
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
@@ -13201,7 +13183,6 @@ Total number of rows TaxiTest.PhoneCall: [(1500,)].
 <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO PhoneCall (idCall, Operator_idOperator, Client_idClient, datetimeValue, Duration) VALUES (</span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">)&quot;</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
 
-
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Q: &quot;</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;C:/SQL/PhoneCall - INSERT 1500 with DATETIME.sql&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;INSERT INTO PhoneCall (idCall, Operator_idOperator, Client_idClient, datetimeValue, Duration) VALUES </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -13217,7 +13198,7 @@ Total number of rows TaxiTest.PhoneCall: [(1500,)].
     
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Q: &quot;</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;D: &quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="c1"># insert_many_rows(table, query, data)</span>
+<span class="c1"># insert_many_rows(query, data)</span>
 </pre></div>
 
 </div>
@@ -13238,7 +13219,7 @@ Total number of rows TaxiTest.PhoneCall: [(1500,)].
 Total number of rows Client: [(5000,)].
 Q:  INSERT INTO PhoneCall (idCall, Operator_idOperator, Client_idClient, datetimeValue, Duration) VALUES (%s, %s, %s, %s, %s)
 Q:  INSERT INTO PhoneCall (idCall, Operator_idOperator, Client_idClient, datetimeValue, Duration) VALUES (%s, %s, %s, %s, %s)
-D:  (1, 46, 1087, &#39;2018-06-15 04:29:00&#39;, 56)
+D:  (1, 16, 2012, &#39;2018-03-05 09:43:00&#39;, 57)
 </pre>
 </div>
 </div>
@@ -13260,13 +13241,22 @@ D:  (1, 46, 1087, &#39;2018-06-15 04:29:00&#39;, 56)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><strong><em> Update: </em></strong> fixed function call</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Table-PaymentService">Table <code>PaymentService</code><a class="anchor-link" href="#Table-PaymentService">&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">DB_NAME</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="s1">&#39;PaymentService&#39;</span>
@@ -13301,7 +13291,7 @@ Total number of rows TaxiTest.PaymentService: [(13,)].
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[17]:</div>
+<div class="prompt output_prompt">Out[47]:</div>
 
 
 
@@ -13318,35 +13308,32 @@ Total number of rows TaxiTest.PaymentService: [(13,)].
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;PaymentService/banks.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">services_list</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="n">total_amount</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">services_list</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;PaymentService/Service.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">services</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">total_amount</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">services</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;Streets.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;Street/Street.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">streets</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
     <span class="n">streets</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">streets</span><span class="p">,</span> <span class="n">total_amount</span><span class="p">)</span>
-    
-
     
 <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO `paymentservice` (idPaymentService, Name, Address, Site) VALUES (</span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">)&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>    
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_amount</span><span class="p">):</span>
     <span class="n">idPaymentService</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="n">Name</span> <span class="o">=</span> <span class="n">services_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">Name</span> <span class="o">=</span> <span class="n">services</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="n">Address</span> <span class="o">=</span> <span class="s1">&#39;Kazan, &#39;</span> <span class="o">+</span> <span class="n">streets</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-    <span class="n">lower</span> <span class="o">=</span> <span class="n">Name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> 
-    <span class="n">Site</span> <span class="o">=</span> <span class="n">lower</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;payservice&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.com&#39;</span>    
+    <span class="n">Site</span> <span class="o">=</span> <span class="n">Name</span><span class="o">.</span><span class="n">lower</span><span class="p">()[:</span><span class="o">-</span><span class="mi">10</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.com&#39;</span>    
     <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">idPaymentService</span><span class="p">,</span> <span class="n">Name</span><span class="p">,</span> <span class="n">Address</span><span class="p">,</span> <span class="n">Site</span><span class="p">))</span>
     
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Q: &quot;</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;D: &quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
-<span class="n">insert_many_rows</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="c1">#insert_many_rows(query, data)</span>
 </pre></div>
 
 </div>
@@ -13365,9 +13352,8 @@ Total number of rows TaxiTest.PaymentService: [(13,)].
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>INSERT INTO `paymentservice` (idPaymentService, Name, Address, Site) VALUES (%s, %s, %s, %s)
 Q:  INSERT INTO `paymentservice` (idPaymentService, Name, Address, Site) VALUES (%s, %s, %s, %s)
-D:  (1, &#39;SberbankPayService&#39;, &#39;Kazan, Meridian, 9&#39;, &#39;sberbank.com&#39;)
+D:  (1, &#39;AlfaPayService&#39;, &#39;Kazan, Belogorsk, 3&#39;, &#39;alfa.com&#39;)
 
-You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#39;TaxiTest.PaymentService&#39; at line 1
 </pre>
 </div>
 </div>
@@ -13441,7 +13427,7 @@ You have an error in your SQL syntax; check the manual that corresponds to your 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">DB_NAME</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="s1">&#39;Payment&#39;</span>
@@ -13477,7 +13463,7 @@ Total number of rows TaxiTest.Payment: [(1200,)].
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[18]:</div>
+<div class="prompt output_prompt">Out[51]:</div>
 
 
 
@@ -13514,7 +13500,7 @@ Total number of rows TaxiTest.Payment: [(1200,)].
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">DB_NAME</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="s1">&#39;Orders&#39;</span>
@@ -13555,7 +13541,7 @@ Total number of rows TaxiTest.Orders: [(1200,)].
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[19]:</div>
+<div class="prompt output_prompt">Out[52]:</div>
 
 
 
@@ -13572,7 +13558,7 @@ Total number of rows TaxiTest.Orders: [(1200,)].
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Try to extract/insert datetime values</span>
@@ -13611,7 +13597,7 @@ Total number of rows TaxiTest.Orders: [(1200,)].
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numpy.random</span> <span class="k">import</span> <span class="n">randint</span>
@@ -13677,7 +13663,6 @@ Total number of rows TaxiTest.Orders: [(1200,)].
     
 <span class="n">f_order</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="n">f_payment</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-        
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Q: </span><span class="si">%s</span><span class="s2">D: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">query_order</span><span class="p">,</span> <span class="n">order_tuple</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Q: </span><span class="si">%s</span><span class="s2">D: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">query_payment</span><span class="p">,</span> <span class="n">payment_tuple</span><span class="p">))</span>
@@ -13703,10 +13688,10 @@ Total number of rows Address: [(1000,)].
 Total number of rows Taxi: [(500,)].
 
 Q: INSERT INTO Orders (idOrder, Call_idCall, Departure_idAddress, Destination_idAddress, Taxi_idTaxi, Payment_idPayment, StartDatetime, FinishDatetime, Cost, Rate) VALUES
-D: (1200, 688, 68, 192, 415, 1200, datetime.datetime(2018, 7, 27, 19, 47), datetime.datetime(2018, 7, 27, 19, 57), 60, 3)
+D: (1200, 688, 633, 279, 13, 1200, datetime.datetime(2018, 7, 27, 18, 55), datetime.datetime(2018, 7, 27, 19, 26), 186, 5)
 
 Q: INSERT INTO Payment (idPayment, PaymentType, PaymentService_idPaymentService, Paycheck) VALUES 
-D: (1200, 0, 7, &#39;WDQ9T8C4H9&#39;)
+D: (1200, 0, 10, &#39;MRMEGGVQNL&#39;)
 </pre>
 </div>
 </div>
@@ -13725,28 +13710,16 @@ D: (1200, 0, 7, &#39;WDQ9T8C4H9&#39;)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[57]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_query_result</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># DESCRIBE taxitest.order;</span>
+<span class="k">def</span> <span class="nf">get_query_result</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">select_rows</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
         <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
             <span class="k">break</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># DESCRIBE taxitest.order;</span>
 
 <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;USE &quot;</span> <span class="o">+</span> <span class="n">DB_NAME</span><span class="p">)</span>
 <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SHOW Tables&quot;</span><span class="p">)</span>
@@ -13814,7 +13787,7 @@ Columns: ( idTaxi, Driver_idDriver, Car_idCar, Current_idAddress, Available, Las
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM TaxiTest.Taxi WHERE Taxi.Available = 1&quot;</span>
@@ -13861,16 +13834,17 @@ Columns: ( idTaxi, Driver_idDriver, Car_idCar, Current_idAddress, Available, Las
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#1057;&#1087;&#1080;&#1089;&#1086;&#1082;-&#1074;&#1089;&#1077;&#1093;-&#1089;&#1074;&#1086;&#1073;&#1086;&#1076;&#1085;&#1099;&#1093;-&#1072;&#1074;&#1090;&#1086;">&#1057;&#1087;&#1080;&#1089;&#1086;&#1082; &#1074;&#1089;&#1077;&#1093; &#1089;&#1074;&#1086;&#1073;&#1086;&#1076;&#1085;&#1099;&#1093; &#1072;&#1074;&#1090;&#1086;<a class="anchor-link" href="#&#1057;&#1087;&#1080;&#1089;&#1086;&#1082;-&#1074;&#1089;&#1077;&#1093;-&#1089;&#1074;&#1086;&#1073;&#1086;&#1076;&#1085;&#1099;&#1093;-&#1072;&#1074;&#1090;&#1086;">&#182;</a></h3>
+<h3 id="&#1057;&#1087;&#1080;&#1089;&#1086;&#1082;-&#1074;&#1089;&#1077;&#1093;-&#1089;&#1074;&#1086;&#1073;&#1086;&#1076;&#1085;&#1099;&#1093;-&#1090;&#1072;&#1082;&#1089;&#1080;-&#1089;-&#1091;&#1082;&#1072;&#1079;&#1072;&#1085;&#1080;&#1077;&#1084;-&#1072;&#1074;&#1090;&#1086;">&#1057;&#1087;&#1080;&#1089;&#1086;&#1082; &#1074;&#1089;&#1077;&#1093; &#1089;&#1074;&#1086;&#1073;&#1086;&#1076;&#1085;&#1099;&#1093; &#1090;&#1072;&#1082;&#1089;&#1080; &#1089; &#1091;&#1082;&#1072;&#1079;&#1072;&#1085;&#1080;&#1077;&#1084; &#1072;&#1074;&#1090;&#1086;<a class="anchor-link" href="#&#1057;&#1087;&#1080;&#1089;&#1086;&#1082;-&#1074;&#1089;&#1077;&#1093;-&#1089;&#1074;&#1086;&#1073;&#1086;&#1076;&#1085;&#1099;&#1093;-&#1090;&#1072;&#1082;&#1089;&#1080;-&#1089;-&#1091;&#1082;&#1072;&#1079;&#1072;&#1085;&#1080;&#1077;&#1084;-&#1072;&#1074;&#1090;&#1086;">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[59]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;SELECT idTaxi, Mark, Model, Lisense, ChildSeat FROM TaxiTest.Taxi JOIN Car ON Car_idCar = idCar WHERE Taxi.Available = 1&quot;</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;idTaxi, Mark, Model, Lisense, ChildSeat (0/1)&quot;</span><span class="p">)</span>
 <span class="n">get_query_result</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 </pre></div>
@@ -13920,57 +13894,17 @@ Columns: ( idTaxi, Driver_idDriver, Car_idCar, Current_idAddress, Available, Las
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[65]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;SELECT Client_idClient FROM Client, PhoneCall JOIN Orders ON PhoneCall.idCall = Orders.Call_idCall WHERE Orders.Taxi_idTaxi IN (SELECT idTaxi FROM Taxi JOIN Car ON Taxi.Car_idCar = Car.idCar WHERE Car.Lisense = &#39;6025U7Z&#39;)&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Client_idClient&quot;</span><span class="p">)</span>
-<span class="n">get_query_result</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
-</pre></div>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;SELECT Client_idClient, Phone, Name FROM (</span><span class="se">\</span>
+<span class="s2">        SELECT DISTINCT Client_idClient FROM Client, PhoneCall JOIN Orders </span><span class="se">\</span>
+<span class="s2">        ON PhoneCall.idCall = Orders.Call_idCall WHERE Orders.Taxi_idTaxi IN (</span><span class="se">\</span>
+<span class="s2">            SELECT idTaxi FROM Taxi JOIN Car ON Taxi.Car_idCar = Car.idCar </span><span class="se">\</span>
+<span class="s2">            WHERE Car.Lisense = &#39;ZMTSOWR&#39;</span><span class="se">\</span>
+<span class="s2">        )</span><span class="se">\</span>
+<span class="s2">    ) AS T, Client WHERE Client.idClient = T.Client_idClient&quot;</span>
 
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Client_idClient
-(167,)
-(2495,)
-(2591,)
-(3937,)
-(3777,)
-(2222,)
-(1557,)
-(2241,)
-(3441,)
-(3418,)
-(628,)
-(3280,)
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;SELECT Client_idClient, Phone, Name FROM </span><span class="se">\</span>
-<span class="s2">    (SELECT DISTINCT Client_idClient FROM Client, PhoneCall JOIN Orders ON PhoneCall.idCall = Orders.Call_idCall </span><span class="se">\</span>
-<span class="s2">    WHERE Orders.Taxi_idTaxi IN (SELECT idTaxi FROM Taxi JOIN Car ON Taxi.Car_idCar = Car.idCar WHERE Car.Lisense = &#39;ZMTSOWR&#39;)) AS T, Client WHERE Client.idClient = T.Client_idClient&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;idClient, Phone, Name&quot;</span><span class="p">)</span>
 <span class="n">get_query_result</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 </pre></div>
@@ -14020,11 +13954,13 @@ Columns: ( idTaxi, Driver_idDriver, Car_idCar, Current_idAddress, Available, Las
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[67]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Sort Clients by trips they had</span>
-<span class="n">q</span> <span class="o">=</span> <span class="s2">&quot; SELECT Client_idClient, COUNT(*) AS TotalCalls FROM PhoneCall GROUP BY Client_idClient ORDER BY TotalCalls DESC&quot;</span>
+<span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;SELECT Client_idClient, COUNT(*) AS TotalCalls FROM PhoneCall </span><span class="se">\</span>
+<span class="s2">     GROUP BY Client_idClient ORDER BY TotalCalls DESC&quot;</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Client_idClient, COUNT(Client`s trips amount)&quot;</span><span class="p">)</span>
 <span class="n">get_query_result</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 </pre></div>
@@ -14066,13 +14002,14 @@ Columns: ( idTaxi, Driver_idDriver, Car_idCar, Current_idAddress, Available, Las
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[66]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Sort Clients by trips they had and get thir names and phones</span>
-<span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;SELECT Client_idClient, Name, Phone, TotalCalls FROM Client, </span><span class="se">\</span>
-<span class="s2">    (SELECT Client_idClient, COUNT(*) AS TotalCalls FROM PhoneCall GROUP BY Client_idClient) AS T </span><span class="se">\</span>
-<span class="s2">    WHERE idClient = Client_idClient ORDER BY TotalCalls DESC&quot;</span>
+<span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;SELECT Client_idClient, Name, Phone, TotalCalls FROM Client, (</span><span class="se">\</span>
+<span class="s2">        SELECT Client_idClient, COUNT(*) AS TotalCalls FROM PhoneCall GROUP BY Client_idClient</span><span class="se">\</span>
+<span class="s2">    ) AS T WHERE idClient = Client_idClient ORDER BY TotalCalls DESC&quot;</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Client_idClient, Name, Phone, TotalCalls&quot;</span><span class="p">)</span>
 <span class="n">get_query_result</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 </pre></div>
@@ -14114,11 +14051,12 @@ Columns: ( idTaxi, Driver_idDriver, Car_idCar, Current_idAddress, Available, Las
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[68]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get Orders of Client with idClient = 1385</span>
 <span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;SELECT idOrder FROM PhoneCall Left JOIN Orders ON PhoneCall.idCall = Call_idCall WHERE Client_idClient = 1385&quot;</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;idOrder&quot;</span><span class="p">)</span>
 <span class="n">get_query_result</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 </pre></div>
@@ -14152,10 +14090,11 @@ Columns: ( idTaxi, Driver_idDriver, Car_idCar, Current_idAddress, Available, Las
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[69]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;SELECT idClient FROM Client WHERE Client.Phone=&#39;+7(726)5384089&#39;&quot;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Just checking the Phone and idClient accordance </span>
+<span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;SELECT idClient FROM Client WHERE Client.Phone=&#39;+7(726)5384089&#39;&quot;</span>
 <span class="n">get_query_result</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 </pre></div>
 
@@ -14184,12 +14123,12 @@ Columns: ( idTaxi, Driver_idDriver, Car_idCar, Current_idAddress, Available, Las
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[72]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get detailed list of orders</span>
 <span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;SELECT idOrder, Call_idCall, Taxi_idTaxi, StartDatetime, FinishDatetime, Cost, Rate FROM Orders WHERE idOrder IN (</span><span class="se">\</span>
-<span class="s2">        SELECT idOrder FROM PhoneCall Left JOIN Orders ON PhoneCall.idCall = Call_idCall WHERE Client_idClient IN (</span><span class="se">\</span>
+<span class="s2">        SELECT idOrder FROM PhoneCall Left JOIN Orders ON PhoneCall.idCall = Orders.Call_idCall WHERE Client_idClient IN (</span><span class="se">\</span>
 <span class="s2">            SELECT idClient FROM Client WHERE Phone=&#39;+7(726)5384089&#39; </span><span class="se">\</span>
 <span class="s2">        )</span><span class="se">\</span>
 <span class="s2">    )&quot;</span>
@@ -14226,15 +14165,17 @@ Columns: ( idTaxi, Driver_idDriver, Car_idCar, Current_idAddress, Available, Las
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[70]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get detailed list of orders with sort on datetime</span>
-<span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;SELECT idOrder, Call_idCall, Taxi_idTaxi, StartDatetime, FinishDatetime, Cost, Rate FROM Orders WHERE idOrder IN (</span><span class="se">\</span>
+<span class="n">q</span> <span class="o">=</span> <span class="s2">&quot;SELECT idOrder, Call_idCall, Taxi_idTaxi, StartDatetime, FinishDatetime, Cost, Rate</span><span class="se">\</span>
+<span class="s2">     FROM Orders WHERE idOrder IN (</span><span class="se">\</span>
 <span class="s2">        SELECT idOrder FROM PhoneCall Left JOIN Orders ON PhoneCall.idCall = Call_idCall WHERE Client_idClient IN (</span><span class="se">\</span>
 <span class="s2">            SELECT idClient FROM Client WHERE Phone=&#39;+7(726)5384089&#39; </span><span class="se">\</span>
 <span class="s2">        )</span><span class="se">\</span>
 <span class="s2">    ) AND StartDatetime &gt; &#39;2018-01-03 00:00:00&#39; AND FinishDatetime &lt; &#39;2018-05-01 00:00:00&#39; ORDER BY StartDatetime&quot;</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;idOrder, Call_idCall, Taxi_idTaxi, StartDatetime, FinishDatetime, Cost, Rate&quot;</span><span class="p">)</span>
 <span class="n">get_query_result</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 </pre></div>
@@ -14266,7 +14207,7 @@ Columns: ( idTaxi, Driver_idDriver, Car_idCar, Current_idAddress, Available, Las
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[71]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get detailed list of orders with sort on datetime with CarId</span>
@@ -14275,6 +14216,7 @@ Columns: ( idTaxi, Driver_idDriver, Car_idCar, Current_idAddress, Available, Las
 <span class="s2">            (SELECT idOrder FROM PhoneCall Left JOIN Orders ON PhoneCall.idCall = Call_idCall WHERE Client_idClient IN </span><span class="se">\</span>
 <span class="s2">                (SELECT idClient FROM Client WHERE Phone=&#39;+7(726)5384089&#39;)) AND StartDatetime &gt; &#39;2018-01-03 00:00:00&#39; AND FinishDatetime &lt; &#39;2018-05-01 00:00:00&#39; </span><span class="se">\</span>
 <span class="s2">        ) AS T2 JOIN Taxi ON T2.Taxi_idTaxi = Taxi.idTaxi&quot;</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;idOrder, Call_idCall, Taxi_idTaxi, Car_idCar, StartDatetime, FinishDatetime, Cost, Rate&quot;</span><span class="p">)</span>
 <span class="n">get_query_result</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 </pre></div>
